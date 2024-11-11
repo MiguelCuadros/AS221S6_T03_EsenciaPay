@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  mc-xd:
+    image: miguelcuadrosgarcia/as221s6_t03_esenciapay:2.0.0
+    container_name: miguelcuadros
+    ports:
+      - "4200:80"
