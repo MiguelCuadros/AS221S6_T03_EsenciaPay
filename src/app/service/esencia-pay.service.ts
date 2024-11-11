@@ -10,132 +10,23 @@ export class EsenciaPayService {
   private web3: any;
   private contract: any;
   private contractAddress = environment.addressContract;
-  private contractAbi = [
-    {
-      "inputs": [],
-      "name": "deposito",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "_from",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "Deposito",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "retiro",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "Retiro",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "transferencia",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "_to",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "address payable",
-          "name": "_from",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "_amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "Transferencia",
-      "type": "event"
-    },
-    {
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
-      "stateMutability": "payable",
-      "type": "receive"
-    },
-    {
-      "inputs": [],
-      "name": "consultarSaldo",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }
-  ];  
+  private contractAbi: any;
 
   constructor() {
+    this.loadAbi();
+  }
+  
+  private async loadAbi() {
+    try {
+      const response = await fetch('/assets/contractAbi.json');
+      this.contractAbi = await response.json();
+      this.initWeb3();
+    } catch (error) {
+      console.error('Error al cargar el ABI del contrato:', error);
+    }
+  }
+  
+  private initWeb3() {
     if ((window as any).ethereum) {
       this.web3 = new Web3((window as any).ethereum);
       try {
@@ -150,8 +41,10 @@ export class EsenciaPayService {
     } else {
       console.warn('Navegador no tiene una billetera Ethereum instalada');
     }
-
-    this.contract = new this.web3.eth.Contract(this.contractAbi, this.contractAddress);
+  
+    if (this.contractAbi) {
+      this.contract = new this.web3.eth.Contract(this.contractAbi, this.contractAddress);
+    }
   }
 
   // Conectar la billetera del usuario

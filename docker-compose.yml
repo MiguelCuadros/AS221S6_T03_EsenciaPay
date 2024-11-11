@@ -1,11 +1,11 @@
 services:
 
   angular-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     container_name: esenciapay
-    image: miguelcuadrosgarcia/as221s6_t03_esenciapay:2.0.1
+    image: miguelcuadrosgarcia/as221s6_t03_esenciapay:2.0.3
     ports:
       - "4200:80"
     networks:
