@@ -1,8 +1,29 @@
-version: '3'
-
 services:
-  mc-xd:
-    image: miguelcuadrosgarcia/as221s6_t03_esenciapay:2.0.0
-    container_name: miguelcuadros
+
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: esenciapay
+    image: miguelcuadrosgarcia/as221s6_t03_esenciapay:2.0.1
     ports:
       - "4200:80"
+    networks:
+      - miguel-net
+
+  database:
+    image: mysql
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: esenciapay
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - miguel-net
+  
+networks:
+  miguel-net:
+    driver: bridge
