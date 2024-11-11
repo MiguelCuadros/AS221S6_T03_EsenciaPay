@@ -1,0 +1,241 @@
+.containerr {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    background-color: #F3F4F6;
+    padding: 32px;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.container__perfil {
+    width: 500px;
+    height: 400px;
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.container__perfil .title {
+    font-weight: 600;
+}
+
+.container__perfil .container__info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 32px 0 24px 0;
+}
+
+.container__perfil .container__info p {
+    font-weight: 600;
+    margin-top: 16px;
+}
+
+.container__perfil .container__info span {
+    color: #858585;
+}
+
+.container__perfil .container__info .container__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #cecece;
+    overflow: hidden;
+}
+
+.container__perfil .container__info .container__img img {
+    width: 100%;
+    height: 100%;
+}
+
+.container__perfil .container__saldo {
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container__perfil .container__saldo .saldo {
+    display: flex;
+    gap: 8px;
+}
+
+.container__perfil .container__saldo .btn_eye {
+    cursor: pointer;
+}
+
+.container__perfil .container__saldo .btn_eye img{
+    width: 20px;
+}
+
+.container__perfil .container__options {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.container__perfil .container__options .btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.container__perfil .container__options .btn img,
+.container__perfil .container__options .btn img{
+    width: 20px;
+}
+
+.container__transacciones {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.container__transacciones .title {
+    font-weight: 600;
+}
+
+.container__transacciones .transacciones {
+    width: 100%;
+    height: 100%;
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container__transacciones .transacciones .transaccion {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #F3F4F6;
+    padding: 16px 24px;
+}
+
+.container__transacciones .transacciones .transaccion span {
+    color: #5C5C5C;
+}
+
+.container__transacciones .transacciones .transaccion .monto span {
+    font-weight: 600;
+    color: #E13434;
+}
+
+.container__transacciones .transacciones .transaccion .monto-verde {
+    font-weight: 600;
+    color: #298725;
+}
+
+.container .container__form {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    top: 0;
+    right: -320px;
+    background-color: #FFF;
+    padding: 16px;
+    transition: right 0.5s ease;
+    box-shadow: -5px 0 15px rgba(121, 121, 121, 0.3); 
+}
+
+.container .container__form.visible  {
+    right: 0;
+}
+
+.container .container__form p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.container .container__form .form {
+    width: 100%;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container .container__form .form .input__destino {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.container .container__form .form .input__destino input {
+    padding: 8px;
+    border: 1px solid #cecece;
+    border-radius: 6px;
+}
+
+.container .container__form .form .input__destino input:focus {
+    outline: 2px solid #00296B;
+}
+
+.container .container__form .form .input__monto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.container .container__form .form .input__monto input {
+    padding: 8px;
+    border: 1px solid #cecece;
+    border-radius: 6px;
+}
+
+ .input__monto input:focus {
+    outline: 2px solid #00296B;
+}
+
+.container .container__form .form .input__textarea {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.container .container__form .form .input__textarea textarea{
+    padding: 8px;
+    border: 1px solid #cecece;
+    border-radius: 6px;
+    resize: none;
+}
+
+.container .container__form .form .container__options {
+    display: flex;
+    gap: 16px;
+}
+
+.container .container__form .form .container__options .btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.btn_connect {
+    height: 40px;
+    background-color: #ee4b00;
+    color: #FFF;
+}
+
+.btn_connect:hover {
+    background-color: #c74002;
+}

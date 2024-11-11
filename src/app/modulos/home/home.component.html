@@ -1,0 +1,109 @@
+<app-header
+  [newValueForm]="isFormVisible"
+  (isFormVisible)="toggleForm($event)"
+></app-header>
+<div class="containerr">
+  <app-alerta [isNotificationSuccess]="isAlertSuccess"></app-alerta>
+  <div class="container__perfil">
+    <p class="title">PERFIL DE USUARIO</p>
+    <div class="container__info">
+      <div class="container__img">
+        <img src="assets/perfil.webp" alt="imagen-perfil" />
+      </div>
+      <p>{{ account }}</p>
+      <span>mario.velarde&#64;gmail.com</span>
+    </div>
+    <div class="container__saldo">
+      <div class="saldo">
+        <p>Saldo:</p>
+        <ng-container *ngIf="hiddenMonto">
+          <span>{{ balance }} ETH</span>
+        </ng-container>
+        <ng-container *ngIf="!hiddenMonto">
+          <span>########</span>
+        </ng-container>
+      </div>
+      <a class="btn_eye" (click)="mostrarSaldo()">
+        <ng-container *ngIf="hiddenMonto">
+          <img src="assets/eje.svg" alt="view" />
+        </ng-container>
+        <ng-container *ngIf="!hiddenMonto">
+          <img src="assets/view-off.svg" alt="viewOff" />
+        </ng-container>
+      </a>
+    </div>
+    <div class="container__options">
+      <button (click)="connectWallet()" class="btn btn_connect">
+        Conectar Billetera
+      </button>
+    </div>
+  </div>
+
+  <div class="container__transacciones">
+    <p class="title">TRANSACCIONES</p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button (click)="visibleFormDeposite()" type="button" class="btn btn-outline-primary">Depositar</button>
+      <button (click)="visibleFormTransferir()" type="button" class="btn btn-outline-primary">Transferir</button>
+      <button (click)="visibleFormRetirar()" type="button" class="btn btn-outline-primary">Retirar</button>
+    </div>
+    <div class="transacciones">
+
+      <!-- Formulariop de deposito -->
+      <div *ngIf="isVisibleFormDeposito">
+        <h3>Depositar</h3>
+        <input class="form-control mb-2" #depositAmount type="text" placeholder="Cantidad en ETH" />
+        <button class="btn btn-primary" (click)="deposit(depositAmount.value)">Depositar</button>
+      </div>
+
+      <!-- Formulario de transferencia -->
+      <div *ngIf="isVisibleFormTransferir">
+        <h3>Transferir</h3>
+        <input class="form-control mb-2" #toAddress type="text" placeholder="Dirección del destinatario" />
+        <input class="form-control mb-2" #transferAmount type="text" placeholder="Cantidad en ETH" />
+        <button class="btn btn-primary" (click)="transfer(toAddress.value, transferAmount.value)">Transferir</button>
+      </div>
+
+      <!-- Formulariop de Retiro -->
+      <div *ngIf="isVisibleFormRetirar">
+        <h3>Retirar</h3>
+        <input class="form-control mb-2" #withdrawAmount type="text" placeholder="Cantidad en ETH" />
+        <button class="btn btn-primary" (click)="withdraw(withdrawAmount.value)">Retirar</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div class="container__form" [ngClass]="{ visible: isFormVisible }">
+    <p>Transferencia</p>
+
+    <form class="form">
+      <div class="input__destino">
+        <label>Destino</label>
+        <input type="text" formControlName="destino"/>
+      </div>
+      <div class="input__monto">
+        <label>Monto</label>
+        <input type="number" formControlName="monto"/>
+  
+      </div>
+      <div class="input__textarea">
+        <label>Descripción</label>
+        <textarea rows="4" formControlName="descripcion"></textarea>
+      </div>
+      <div class="container__options">
+        <button type="button"  class="btn btn__continuar">Continuar</button>
+        <button type="button"  class="btn btn__cancelar">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div> -->
+</div>
+
+<div>
+  
+
+  
+
+  
+</div>
