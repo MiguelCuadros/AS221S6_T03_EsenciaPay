@@ -18,7 +18,7 @@ export class EsenciaPayService {
   
   private async loadAbi() {
     try {
-      const response = await fetch('/app/abi/esenciaPay.json');
+      const response = await fetch('assets/abi/esencia-pay.json');
       this.contractAbi = await response.json();
       this.initWeb3();
     } catch (error) {
